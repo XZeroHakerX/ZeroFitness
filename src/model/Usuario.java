@@ -23,8 +23,10 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	private Double weight;
 	private Double height;
 
+	//Constructor con parámetros:
+	
 	public Usuario(String name, String userName, String password, Integer age, Double weight, Double height)
-			throws NameException {
+			throws Exception {
 		setName(name);
 		setUserName(userName);
 		setPassword(password);
@@ -33,6 +35,9 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 		setHeight(height);
 	}
 
+	
+	//Getters and Setters:
+	
 	private String getName() {
 		return name;
 	}
@@ -58,32 +63,54 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	}
 
 	private void setName(String name) throws NameException {
-
 		if (name == null || name.isBlank())
 			throw new NameException();
-
 		this.name = name;
 	}
 
 	private void setUserName(String userName) {
-		this.userName = userName;
+		if (userName == null || userName.isBlank()) {
+			this.userName = null;
+		} else {
+			this.userName = userName;
+		}
 	}
 
 	private void setPassword(String password) {
-		this.password = password;
+		if (password == null || password.isBlank()) {
+			this.password = null;
+		} else {
+			this.password = password;
+		}
 	}
 
-	private void setAge(Integer age) {
+	private void setAge(Integer age) throws AgeException {
+		if (age == null || age <= 0)
+			throw new AgeException();
 		this.age = age;
 	}
 
-	private void setWeight(Double weight) {
+	private void setWeight(Double weight) throws WeightException {
+		if (weight == null || weight <= 0)
+			throw new WeightException();
 		this.weight = weight;
 	}
 
-	private void setHeight(Double height) {
+	private void setHeight(Double height) throws HeightException {
+		if (weight == null || weight <= 0)
+			throw new HeightException();
 		this.height = height;
 	}
+
+	
+	
+	
+	// Métodos propios:
+	
+	
+	
+	
+	// Métodos para comparaciones:
 
 	@Override
 	public int hashCode() {
@@ -109,5 +136,6 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 
 		return 0;
 	}
+
 
 }
