@@ -12,7 +12,7 @@ import java.util.Objects;
  * 
  */
 
-public class Usuario implements Serializable, Comparable<Usuario> {
+public class User implements Serializable, Comparable<User> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +25,7 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 
 	//Constructor con parámetros:
 	
-	public Usuario(String name, String userName, String password, Integer age, Double weight, Double height)
+	public User(String name, String userName, String password, Integer age, Double weight, Double height)
 			throws Exception {
 		setName(name);
 		setUserName(userName);
@@ -125,14 +125,14 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		return Objects.equals(age, other.age) && Objects.equals(height, other.height)
 				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
 				&& Objects.equals(userName, other.userName) && Objects.equals(weight, other.weight);
 	}
 
 	@Override
-	public int compareTo(Usuario o) {
+	public int compareTo(User o) {
 
 		return 0;
 	}
