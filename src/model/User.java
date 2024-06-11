@@ -12,10 +12,11 @@ import java.util.Objects;
  * 
  */
 
-public class Usuario implements Serializable, Comparable<Usuario> {
+public class User implements Serializable, Comparable<User> {
 
 	private static final long serialVersionUID = 1L;
 
+	private Integer dni;
 	private String name;
 	private String userName;
 	private String password;
@@ -25,8 +26,9 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 
 	//Constructor con parámetros:
 	
-	public Usuario(String name, String userName, String password, Integer age, Double weight, Double height)
+	public User(Integer dni, String name, String userName, String password, Integer age, Double weight, Double height)
 			throws Exception {
+		setDni(dni);
 		setName(name);
 		setUserName(userName);
 		setPassword(password);
@@ -37,6 +39,9 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 
 	
 	//Getters and Setters:
+	private Integer getDni() {
+		return dni;
+	}
 	
 	private String getName() {
 		return name;
@@ -62,6 +67,11 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 		return height;
 	}
 
+	private void setDni(Integer dni) throws DniException {
+		if ( dni == null || dni < 8 || dni>=9 ) throw new  DniException();
+		this.dni = dni;	
+	}
+	
 	private void setName(String name) throws NameException {
 		if (name == null || name.isBlank())
 			throw new NameException();
@@ -112,10 +122,20 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	
 	// Métodos para comparaciones:
 
+	
+
+	@Override
+	public int compareTo(User o) {
+
+		return 0;
+	}
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, height, name, password, userName, weight);
+		return Objects.hash(age, dni, height, name, password, userName, weight);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -125,16 +145,10 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(age, other.age) && Objects.equals(height, other.height)
+		User other = (User) obj;
+		return Objects.equals(age, other.age) && Objects.equals(dni, other.dni) && Objects.equals(height, other.height)
 				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
 				&& Objects.equals(userName, other.userName) && Objects.equals(weight, other.weight);
-	}
-
-	@Override
-	public int compareTo(Usuario o) {
-
-		return 0;
 	}
 
 

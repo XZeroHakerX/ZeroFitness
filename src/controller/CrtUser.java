@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import model.Usuario;
+import model.User;
 
 /**
  * <h2>Class CrtUsuario</h2> <i>Controlador encargado del CRUD Usuario. </i>
@@ -11,25 +11,29 @@ import model.Usuario;
  * @author Zero Haker
  * 
  */
-public class CrtUsuario {
+public class CrtUser {
 
-	public void createUsuario(String name, String userName, String password, Integer age, Double weight, Double height)
+	
+	public void createUsuario(Integer dni, String name, String userName, String password, Integer age, Double weight, Double height)
 			throws Exception {
 
-		Usuario u = new Usuario(name, userName, password, age, weight, height);
+		User u = new User(dni, name, userName, password, age, weight, height);
 		// Conexion con base para comprobar que no exista un user igual
 
 	}
 
-	public void deleteUsuario(Usuario usuario) {
+	
+	public void deleteUsuario(User usuario) {
 
 	}
 
-	public List<Usuario> listUsuario() {
+	
+	public List<User> listUsuario() {
 
 		return null;
 	}
 
+	
 	public void updateUsuario() {
 
 	}
