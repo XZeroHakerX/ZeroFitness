@@ -1,0 +1,36 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-19002f18928-68bc856edfbd03fb": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "BD.sqlite",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\Zero Haker\\Desktop\\Programas\\ZeroFitness\\db\\BD.sqlite",
+				"url": "jdbc:sqlite:C:\\Users\\Zero Haker\\Desktop\\Programas\\ZeroFitness\\db\\BD.sqlite",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"sqlite_jdbc-19002f18928-68bc856edfbd03fb":{"@properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202406111716\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"sqlite_jdbc-19002f18928-68bc856edfbd03fb\"\u003e\u003centity id\u003d\"1\" name\u003d\"USER\" fq-name\u003d\"\u0026quot;USER\u0026quot;\" order\u003d\"0\" border-width\u003d\"3\" x\u003d\"414\" y\u003d\"45\"/\u003e\u003centity id\u003d\"2\" name\u003d\"ROUTINE\" fq-name\u003d\"\u0026quot;ROUTINE\u0026quot;\" order\u003d\"1\" x\u003d\"86\" y\u003d\"59\"/\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations/\u003e\u003c/diagram\u003e"}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}

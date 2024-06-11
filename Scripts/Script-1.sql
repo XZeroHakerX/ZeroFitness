@@ -1,0 +1,13 @@
+
+DROP TABLE "ROUTINE";
+
+CREATE TABLE "ROUTINE" (
+	codRoutine INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT,
+	description TEXT,
+	dateStart TEXT,
+	dateFinish TEXT NOT NULL,
+	daysCount INTEGER,
+	CONSTRAINT ROUTINE_PK PRIMARY KEY (codRoutine)
+);
+
