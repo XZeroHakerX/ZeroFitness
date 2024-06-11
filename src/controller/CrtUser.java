@@ -13,23 +13,33 @@ import model.User;
  */
 public class CrtUser {
 
-	public void createUsuario(String name, String userName, String password, Integer age, Double weight, Double height)
+	
+	public void createUsuario(Integer dni, String name, String userName, String password, Integer age, Double weight, Double height)
 			throws Exception {
 
-		User u = new User(name, userName, password, age, weight, height);
+
+
+		User u = new User(dni, name, userName, password, age, weight, height);
 		// Conexion con base para comprobar que no exista un user igual
 
 	}
 
+
+	
+ 
 	public void deleteUsuario(User usuario) {
 
 	}
+
+
+	
 
 	public List<User> listUsuario() {
 
 		return null;
 	}
 
+	
 	public void updateUsuario() {
 
 	}
