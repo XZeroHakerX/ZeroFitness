@@ -153,6 +153,8 @@ public class User implements Serializable, Comparable<User> {
 				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
 				&& Objects.equals(userName, other.userName) && Objects.equals(weight, other.weight);
 	}
+	
+}
 
 
 
