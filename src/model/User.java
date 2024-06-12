@@ -24,8 +24,8 @@ public class User implements Serializable, Comparable<User> {
 	private Double weight;
 	private Double height;
 
-	//Constructor con parámetros:
-	
+	// Constructor con parámetros:
+
 	public User(Integer dni, String name, String userName, String password, Integer age, Double weight, Double height)
 
 			throws Exception {
@@ -38,41 +38,41 @@ public class User implements Serializable, Comparable<User> {
 		setHeight(height);
 	}
 
-	
-	//Getters and Setters:
-	private Integer getDni() {
+	// Getters and Setters:
+	public Integer getDni() {
 		return dni;
 	}
-	
-	private String getName() {
+
+	public String getName() {
 		return name;
 	}
 
-	private String getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	private String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	private Integer getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	private Double getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
-	private Double getHeight() {
+	public Double getHeight() {
 		return height;
 	}
 
 	private void setDni(Integer dni) throws DniException {
-		if ( dni == null || dni < 8 || dni>=9 ) throw new  DniException();
-		this.dni = dni;	
+		if (dni == null)
+			throw new DniException();
+		this.dni = dni;
 	}
-	
+
 	private void setName(String name) throws NameException {
 		if (name == null || name.isBlank())
 			throw new NameException();
@@ -108,22 +108,18 @@ public class User implements Serializable, Comparable<User> {
 	}
 
 	private void setHeight(Double height) throws HeightException {
-		if (weight == null || weight <= 0)
+		if (height == null || height <= 0)
 			throw new HeightException();
 		this.height = height;
 	}
 
-	
-	
-	
 	// Métodos propios:
-	
-	
-	
-	
-	// Métodos para comparaciones:
 
-	
+	public Double getIMC() {
+		return weight / height;
+	}
+
+	// Métodos para comparaciones:
 
 	@Override
 	public int compareTo(User o) {
@@ -131,12 +127,10 @@ public class User implements Serializable, Comparable<User> {
 		return 0;
 	}
 
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(age, dni, height, name, password, userName, weight);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -153,10 +147,5 @@ public class User implements Serializable, Comparable<User> {
 				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
 				&& Objects.equals(userName, other.userName) && Objects.equals(weight, other.weight);
 	}
-	
+
 }
-
-
-
-
-

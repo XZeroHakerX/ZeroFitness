@@ -1,12 +1,12 @@
 package start;
 
-import view.FrmPrincipal;
+import view.FrmLogin;
 
 public class Start {
 
 	public static void main(String[] args) {
 
-		new FrmPrincipal();
+		new FrmLogin();
 	}
 
 }
