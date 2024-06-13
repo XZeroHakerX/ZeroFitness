@@ -40,11 +40,15 @@ public class CtrFrmPrincipal {
 			FrmPrincipal.txtWeight.setText("0");
 			FrmPrincipal.txtHeight.setText("0");
 			FrmPrincipal.lblIMCMessage.setText("User no selected.");
+			FrmPrincipal.btnStartRoutine.setEnabled(false);
+			FrmPrincipal.listRoutinesUser.setEnabled(false);
+			FrmPrincipal.txtAreaMessageRoutines.setText("Select user and start training!");
 
 		} else {
 
 			CtrUser ctr = new CtrUser();
 			FrmPrincipal.listRoutinesUser = ctr.listRoutines(userActive);
+			
 			FrmPrincipal.txtUser.setText(userActive.get().getName());
 			FrmPrincipal.txtAge.setText(userActive.get().getAge().toString());
 			FrmPrincipal.txtWeight.setText(userActive.get().getWeight().toString());
@@ -68,7 +72,7 @@ public class CtrFrmPrincipal {
 				FrmPrincipal.lblIMCMessage.setText("Obesity");
 			}
 
-			if (userActive.get().getName().equalsIgnoreCase("julian")) {
+			if (userActive.get().getName().equalsIgnoreCase("admin")) {
 				FrmPrincipal.lblFotoApp
 						.setIcon(new ImageIcon(FrmLogin.class.getResource("/resources/fondoAppAdmin.png")));
 				;

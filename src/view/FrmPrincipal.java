@@ -24,6 +24,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import model.Routine;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 public class FrmPrincipal extends JFrame {
 
@@ -35,12 +37,14 @@ public class FrmPrincipal extends JFrame {
 	private final Font fontFrmTexts = new Font("Rockwell", Font.ITALIC, 20);
 	private final Font fontBttn = new Font("Sylfaen", Font.BOLD, 20);
 
-	public static JMenuItem mntmAdmin, mntmManual, mntmWeb, mntmChangeUser;
+	public static JMenuItem mntmAdmin, mntmManual, mntmWeb, mntmChangeUser, mntmAdminRoutines, mntmStartNewRoutine,
+			mntmAdminExercises;
 	public static JPanel pnLeft, pnOptionAdmin;
 	public static JTextField txtUser, txtAge, txtHeight, txtIMC, txtWeight;
 	public static JButton btnCancel, btnSave, btnCopiarRutina, btnStartRoutine;
 	public static JLabel lblIMCMessage, lblFotoApp;
 	public static JList<Routine> listRoutinesUser;
+	public static JTextArea txtAreaMessageRoutines;
 
 	private static JButton btnEdit;
 
@@ -52,7 +56,7 @@ public class FrmPrincipal extends JFrame {
 		context = this;
 
 		setTitle("ZERO FITNESS");
-		setSize(1200, 800);
+		setSize(1200, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -105,27 +109,27 @@ public class FrmPrincipal extends JFrame {
 		pnOptionAdmin.setVisible(false);
 		pnLeft.add(pnOptionAdmin, BorderLayout.WEST);
 		pnOptionAdmin.setLayout(new GridLayout(6, 0, 0, 0));
-		
+
 		JButton btnAdmin1 = new JButton("Admin 1");
 		btnAdmin1.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin1);
-		
+
 		JButton btnAdmin2 = new JButton("Admin 2");
 		btnAdmin2.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin2);
-		
+
 		JButton btnAdmin3 = new JButton("Admin 3");
 		btnAdmin3.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin3);
-		
+
 		JButton btnAdmin4 = new JButton("Admin 4");
 		btnAdmin4.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin4);
-		
+
 		JButton btnAdmin5 = new JButton("Admin 5");
 		btnAdmin5.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin5);
-		
+
 		JButton btnAdmin6 = new JButton("Admin 6");
 		btnAdmin6.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		pnOptionAdmin.add(btnAdmin6);
@@ -136,8 +140,8 @@ public class FrmPrincipal extends JFrame {
 		getContentPane().add(pnCenter);
 		pnCenter.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblRoutines = new JLabel("Routines: ");
-		lblRoutines.setFont(new Font("Sylfaen", Font.PLAIN, 60));
+		JLabel lblRoutines = new JLabel("Routines ");
+		lblRoutines.setFont(new Font("Rockwell", Font.PLAIN, 60));
 		pnCenter.add(lblRoutines, BorderLayout.NORTH);
 
 		JPanel pnButtonRoutines = new JPanel();
@@ -146,11 +150,12 @@ public class FrmPrincipal extends JFrame {
 		pnButtonRoutines.setLayout(new GridLayout(0, 2, 40, 5));
 
 		btnCopiarRutina = new JButton("Copy and Start");
+		btnCopiarRutina.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCopiarRutina.setEnabled(false);
 		pnButtonRoutines.add(btnCopiarRutina);
 
-		btnStartRoutine = new JButton("Start New Routine");
-		btnStartRoutine.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnStartRoutine = new JButton("New !");
+		btnStartRoutine.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		pnButtonRoutines.add(btnStartRoutine);
 
 		JPanel pnCenterRoutines = new JPanel();
@@ -160,12 +165,17 @@ public class FrmPrincipal extends JFrame {
 
 		JLabel lblSubRoutines = new JLabel("Routines realized:");
 		lblSubRoutines.setBackground(new Color(255, 255, 255));
-		lblSubRoutines.setFont(new Font("Sylfaen", Font.ITALIC, 20));
+		lblSubRoutines.setFont(new Font("Sylfaen", Font.ITALIC, 30));
 		pnCenterRoutines.add(lblSubRoutines, BorderLayout.NORTH);
 
-		JLabel lblCopyOrStart = new JLabel("Select routine for copy or start new!");
-		lblCopyOrStart.setFont(new Font("Sylfaen", Font.PLAIN, 20));
-		pnCenterRoutines.add(lblCopyOrStart, BorderLayout.SOUTH);
+		txtAreaMessageRoutines = new JTextArea();
+		txtAreaMessageRoutines.setBackground(new Color(253, 245, 230));
+		txtAreaMessageRoutines.setLineWrap(true);
+		txtAreaMessageRoutines.setText("Select routine for copy or start new routine!");
+		txtAreaMessageRoutines.setRows(2);
+		txtAreaMessageRoutines.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		txtAreaMessageRoutines.setEditable(false);
+		pnCenterRoutines.add(txtAreaMessageRoutines, BorderLayout.SOUTH);
 
 		JScrollPane scrollPane = new JScrollPane();
 		pnCenterRoutines.add(scrollPane, BorderLayout.CENTER);
@@ -329,23 +339,31 @@ public class FrmPrincipal extends JFrame {
 
 		mnUser.add(new JSeparator());
 
-		mntmChangeUser = new JMenuItem("Change User");
-		mntmChangeUser.setFont(fontMenu);
+		mntmChangeUser = new JMenuItem("Select User");
+		mntmChangeUser.setFont(fontSubMenu);
 		mnUser.add(mntmChangeUser);
 
 		mnRoutine = new JMenu("Routine");
 		mnRoutine.setFont(fontMenu);
 		mnBar.add(mnRoutine);
 
-		JMenuItem mntmAdminRoutines = new JMenuItem("Admin Routines");
+		mntmAdminRoutines = new JMenuItem("Admin Routines");
+		mntmAdminRoutines.setFont(fontSubMenu);
 		mnRoutine.add(mntmAdminRoutines);
 
-		JMenuItem mntmStartNewRoutine = new JMenuItem("Start New Routine");
+		mnRoutine.add(new JSeparator());
+
+		mntmStartNewRoutine = new JMenuItem("Start New Routine");
+		mntmStartNewRoutine.setFont(fontSubMenu);
 		mnRoutine.add(mntmStartNewRoutine);
 
 		mnExercise = new JMenu("Exercise");
 		mnExercise.setFont(fontMenu);
 		mnBar.add(mnExercise);
+
+		mntmAdminExercises = new JMenuItem("Admin Exercises");
+		mntmAdminExercises.setFont(fontSubMenu);
+		mnExercise.add(mntmAdminExercises);
 
 		mnHelp = new JMenu("Help");
 		mnHelp.setFont(fontMenu);

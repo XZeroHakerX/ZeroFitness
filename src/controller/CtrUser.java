@@ -34,8 +34,9 @@ public class CtrUser {
 		List<User> aux = new ArrayList<User>();
 		try {
 
-			aux.add(new User(47560414, "Julian", null, null, 32, 68.2, 1.69));
-			aux.add(new User(47560001, "Pepe", null, null, 31, 80.0, 1.88));
+			aux.add(new User(58632121, "Admin", null, "admin", 1, 1.0, 1.0));
+			aux.add(new User(47560414, "Julian", null, "23__julian", 32, 68.2, 1.69));
+			aux.add(new User(47560001, "Pepe", null, null, 31, 80.0, 1.50));
 			aux.add(new User(47560002, "Angela", null, null, 27, 90.0, 1.90));
 			aux.add(new User(47850003, "Anyelina", null, null, 40, 40.2, 1.99));
 
@@ -51,7 +52,7 @@ public class CtrUser {
 	}
 
 	public JList listRoutines(Optional<User> userActive) {
-		
+
 		return null;
 	}
 
