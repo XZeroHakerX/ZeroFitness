@@ -1,0 +1,36 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-19002f18928-68bc856edfbd03fb": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "BD.sqlite",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\Zero Haker\\Desktop\\Programas\\ZeroFitness\\db\\BD.sqlite",
+				"url": "jdbc:sqlite:C:\\Users\\Zero Haker\\Desktop\\Programas\\ZeroFitness\\db\\BD.sqlite",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"sqlite_jdbc-19002f18928-68bc856edfbd03fb":{"@properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202406111813\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"sqlite_jdbc-19002f18928-68bc856edfbd03fb\"\u003e\u003centity id\u003d\"1\" name\u003d\"EXERCISE\" fq-name\u003d\"EXERCISE\" order\u003d\"0\" x\u003d\"1002\" y\u003d\"474\"/\u003e\u003centity id\u003d\"2\" name\u003d\"ROUTINE_EXERCISE\" fq-name\u003d\"ROUTINE_EXERCISE\" order\u003d\"1\" x\u003d\"740\" y\u003d\"511\"/\u003e\u003centity id\u003d\"3\" name\u003d\"USER\" fq-name\u003d\"\u0026quot;USER\u0026quot;\" order\u003d\"2\" x\u003d\"71\" y\u003d\"489\"/\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"ROUTINE_EXERCISE_FK2\" fq-name\u003d\"ROUTINE_EXERCISE.ROUTINE_EXERCISE_FK2\" type\u003d\"fk\" pk-ref\u003d\"1\" fk-ref\u003d\"2\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}},":ROUTINE":{"constraints":{"ROUTINE_VK":{"type":"vpk","attributes":["codUser"]}}},":ROUTINE_EXERCISE":{"properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202406111811\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"sqlite_jdbc-19002f18928-68bc856edfbd03fb\"\u003e\u003centity id\u003d\"1\" name\u003d\"ROUTINE_EXERCISE\" fq-name\u003d\"ROUTINE_EXERCISE\" order\u003d\"0\" color-bg\u003d\"255,128,64\" x\u003d\"572\" y\u003d\"140\"/\u003e\u003centity id\u003d\"2\" name\u003d\"ROUTINE\" fq-name\u003d\"\u0026quot;ROUTINE\u0026quot;\" order\u003d\"1\" border-width\u003d\"3\" x\u003d\"192\" y\u003d\"77\"/\u003e\u003centity id\u003d\"3\" name\u003d\"EXERCISE\" fq-name\u003d\"EXERCISE\" order\u003d\"2\" x\u003d\"959\" y\u003d\"77\"/\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"ROUTINE_EXERCISE_ROUTINE_FK\" fq-name\u003d\"ROUTINE_EXERCISE.ROUTINE_EXERCISE_ROUTINE_FK\" type\u003d\"fk\" pk-ref\u003d\"2\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"ROUTINE_EXERCISE_FK2\" fq-name\u003d\"ROUTINE_EXERCISE.ROUTINE_EXERCISE_FK2\" type\u003d\"fk\" pk-ref\u003d\"3\" fk-ref\u003d\"1\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}}},":USER_ROUTINE":{"properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202406111758\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"sqlite_jdbc-19002f18928-68bc856edfbd03fb\"\u003e\u003centity id\u003d\"1\" name\u003d\"USER_ROUTINE\" fq-name\u003d\"USER_ROUTINE\" order\u003d\"0\" color-bg\u003d\"255,128,64\" x\u003d\"40\" y\u003d\"243\"/\u003e\u003centity id\u003d\"2\" name\u003d\"ROUTINE\" fq-name\u003d\"\u0026quot;ROUTINE\u0026quot;\" order\u003d\"1\" x\u003d\"223\" y\u003d\"33\"/\u003e\u003centity id\u003d\"3\" name\u003d\"USER\" fq-name\u003d\"\u0026quot;USER\u0026quot;\" order\u003d\"2\" x\u003d\"482\" y\u003d\"236\"/\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"USER_ROUTINE_ROUTINE_FK\" fq-name\u003d\"USER_ROUTINE.USER_ROUTINE_ROUTINE_FK\" type\u003d\"fk\" pk-ref\u003d\"2\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"USER_ROUTINE_USER_FK\" fq-name\u003d\"USER_ROUTINE.USER_ROUTINE_USER_FK\" type\u003d\"fk\" pk-ref\u003d\"3\" fk-ref\u003d\"1\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
