@@ -12,6 +12,7 @@ public class CtrFrmLogin {
 
 	public static Optional<User> userSelected;
 
+
 	public void start(JFrame context) {
 
 		userSelected = FrmLogin.users.stream().filter(user -> user.getName().equals(FrmLogin.selectedOption))
