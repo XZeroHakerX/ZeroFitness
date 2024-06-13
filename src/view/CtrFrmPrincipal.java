@@ -2,17 +2,24 @@ package view;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import controller.CtrUser;
+import model.Routine;
 import model.User;
 
 public class CtrFrmPrincipal {
 
 	public static Boolean isEdit = false;
 	public static Optional<User> userActive = null;
+
+	private static List<Routine> listado = new ArrayList<>();
 
 	public void changeUser(JFrame context) {
 
@@ -36,6 +43,8 @@ public class CtrFrmPrincipal {
 
 		} else {
 
+			CtrUser ctr = new CtrUser();
+			FrmPrincipal.listRoutinesUser = ctr.listRoutines(userActive);
 			FrmPrincipal.txtUser.setText(userActive.get().getName());
 			FrmPrincipal.txtAge.setText(userActive.get().getAge().toString());
 			FrmPrincipal.txtWeight.setText(userActive.get().getWeight().toString());
@@ -57,6 +66,14 @@ public class CtrFrmPrincipal {
 				FrmPrincipal.lblIMCMessage.setForeground(new Color(255, 165, 0));
 			} else {
 				FrmPrincipal.lblIMCMessage.setText("Obesity");
+			}
+
+			if (userActive.get().getName().equalsIgnoreCase("julian")) {
+				FrmPrincipal.lblFotoApp
+						.setIcon(new ImageIcon(FrmLogin.class.getResource("/resources/fondoAppAdmin.png")));
+				;
+				FrmPrincipal.pnOptionAdmin.setVisible(true);
+
 			}
 
 		}

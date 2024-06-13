@@ -4,27 +4,26 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+
+import model.Routine;
 
 public class FrmPrincipal extends JFrame {
 
@@ -37,23 +36,18 @@ public class FrmPrincipal extends JFrame {
 	private final Font fontBttn = new Font("Sylfaen", Font.BOLD, 20);
 
 	public static JMenuItem mntmAdmin, mntmManual, mntmWeb, mntmChangeUser;
+	public static JPanel pnLeft, pnOptionAdmin;
+	public static JTextField txtUser, txtAge, txtHeight, txtIMC, txtWeight;
+	public static JButton btnCancel, btnSave, btnCopiarRutina, btnStartRoutine;
+	public static JLabel lblIMCMessage, lblFotoApp;
+	public static JList<Routine> listRoutinesUser;
 
-	public static JTextField txtUser;
-	public static JTextField txtAge;
-	public static JTextField txtHeight;
-	public static JTextField txtIMC;
-	public static JTextField txtWeight;
-	public static JButton btnCancel;
-	public static JButton btnSave;
-	public static JButton btnCopiarRutina;
-	public static JButton btnStartRoutine;
-	public static JLabel lblIMCMessage;
 	private static JButton btnEdit;
 
 	private static JFrame context;
 
 	public FrmPrincipal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmPrincipal.class.getResource("/view/IconApp.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmPrincipal.class.getResource("/resources/IconApp.png")));
 
 		context = this;
 
@@ -94,13 +88,47 @@ public class FrmPrincipal extends JFrame {
 
 	private void addComponents() {
 
-		getContentPane().setBackground(new Color(255, 255, 255));
+		getContentPane().setBackground(new Color(250, 250, 210));
 		getContentPane().setLayout(new GridLayout(0, 3, 15, 15));
 
-		JPanel pnLeft = new JPanel();
-		pnLeft.setBackground(new Color(255, 255, 255));
+		pnLeft = new JPanel();
+		pnLeft.setBackground(new Color(0, 0, 0));
 		pnLeft.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		getContentPane().add(pnLeft);
+		pnLeft.setLayout(new BorderLayout(0, 0));
+
+		lblFotoApp = new JLabel("");
+		lblFotoApp.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/resources/fondoApp.png")));
+		pnLeft.add(lblFotoApp, BorderLayout.CENTER);
+
+		pnOptionAdmin = new JPanel();
+		pnOptionAdmin.setVisible(false);
+		pnLeft.add(pnOptionAdmin, BorderLayout.WEST);
+		pnOptionAdmin.setLayout(new GridLayout(6, 0, 0, 0));
+		
+		JButton btnAdmin1 = new JButton("Admin 1");
+		btnAdmin1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin1);
+		
+		JButton btnAdmin2 = new JButton("Admin 2");
+		btnAdmin2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin2);
+		
+		JButton btnAdmin3 = new JButton("Admin 3");
+		btnAdmin3.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin3);
+		
+		JButton btnAdmin4 = new JButton("Admin 4");
+		btnAdmin4.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin4);
+		
+		JButton btnAdmin5 = new JButton("Admin 5");
+		btnAdmin5.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin5);
+		
+		JButton btnAdmin6 = new JButton("Admin 6");
+		btnAdmin6.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pnOptionAdmin.add(btnAdmin6);
 
 		JPanel pnCenter = new JPanel();
 		pnCenter.setBorder(null);
@@ -124,26 +152,26 @@ public class FrmPrincipal extends JFrame {
 		btnStartRoutine = new JButton("Start New Routine");
 		btnStartRoutine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pnButtonRoutines.add(btnStartRoutine);
-		
+
 		JPanel pnCenterRoutines = new JPanel();
 		pnCenterRoutines.setBackground(new Color(255, 228, 181));
 		pnCenter.add(pnCenterRoutines, BorderLayout.CENTER);
 		pnCenterRoutines.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel lblSubRoutines = new JLabel("Routines realized:");
 		lblSubRoutines.setBackground(new Color(255, 255, 255));
 		lblSubRoutines.setFont(new Font("Sylfaen", Font.ITALIC, 20));
 		pnCenterRoutines.add(lblSubRoutines, BorderLayout.NORTH);
-		
+
 		JLabel lblCopyOrStart = new JLabel("Select routine for copy or start new!");
 		lblCopyOrStart.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		pnCenterRoutines.add(lblCopyOrStart, BorderLayout.SOUTH);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		pnCenterRoutines.add(scrollPane, BorderLayout.CENTER);
-		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
+
+		listRoutinesUser = new JList();
+		scrollPane.setViewportView(listRoutinesUser);
 
 		JPanel pnRight = new JPanel();
 		pnRight.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -254,7 +282,7 @@ public class FrmPrincipal extends JFrame {
 		btnCancel.setEnabled(false);
 
 		btnSave = new JButton("SAVE!");
-		btnSave.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/view/IconSave.png")));
+		btnSave.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/resources/IconSave.png")));
 		btnSave.setFont(fontBttn);
 		pnGuardar.add(btnSave);
 		btnSave.setEnabled(false);
@@ -270,7 +298,7 @@ public class FrmPrincipal extends JFrame {
 		pnEdit.add(lblActiveEdit);
 
 		btnEdit = new JButton("EDIT");
-		btnEdit.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/view/IconEdit.png")));
+		btnEdit.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/resources/IconEdit.png")));
 
 		btnEdit.setFont(fontBttn);
 		btnEdit.setMnemonic('E');
@@ -308,10 +336,10 @@ public class FrmPrincipal extends JFrame {
 		mnRoutine = new JMenu("Routine");
 		mnRoutine.setFont(fontMenu);
 		mnBar.add(mnRoutine);
-		
+
 		JMenuItem mntmAdminRoutines = new JMenuItem("Admin Routines");
 		mnRoutine.add(mntmAdminRoutines);
-		
+
 		JMenuItem mntmStartNewRoutine = new JMenuItem("Start New Routine");
 		mnRoutine.add(mntmStartNewRoutine);
 

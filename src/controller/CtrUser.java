@@ -2,6 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.swing.JList;
 
 import model.User;
 
@@ -37,7 +40,6 @@ public class CtrUser {
 			aux.add(new User(47850003, "Anyelina", null, null, 40, 40.2, 1.99));
 
 		} catch (Exception e) {
-			System.out.println("No puedo");
 		}
 
 		return aux;
@@ -46,6 +48,11 @@ public class CtrUser {
 
 	public void updateUsuario(String name, Integer age, Double weight, Double height) {
 
+	}
+
+	public JList listRoutines(Optional<User> userActive) {
+		
+		return null;
 	}
 
 }

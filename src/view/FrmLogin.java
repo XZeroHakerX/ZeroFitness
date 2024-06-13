@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 
 import model.User;
 import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class FrmLogin extends JFrame {
 
@@ -31,6 +33,7 @@ public class FrmLogin extends JFrame {
 	public static JButton btnCancel;
 
 	public FrmLogin() {
+		getContentPane().setBackground(new Color(255, 228, 181));
 
 		context = this;
 
@@ -38,7 +41,7 @@ public class FrmLogin extends JFrame {
 		setTitle("Login (Zero Fitness)");
 		setAlwaysOnTop(true);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLogin.class.getResource("/view/IconApp.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLogin.class.getResource("/resources/IconApp.png")));
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize(600, 400);
@@ -55,14 +58,16 @@ public class FrmLogin extends JFrame {
 
 	private void addComponents() {
 		comboBoxUser = new JComboBox<>(usersNames);
+		comboBoxUser.setFont(new Font("SimSun", Font.BOLD, 20));
 		comboBoxUser.setBounds(246, 94, 234, 51);
 		comboBoxUser.setSelectedIndex(-1);
 		getContentPane().add(comboBoxUser);
 
 		JLabel lblChooseUser = new JLabel("Choose User:");
+		lblChooseUser.setForeground(new Color(255, 255, 255));
 		lblChooseUser.setFont(new Font("Rockwell", Font.BOLD | Font.ITALIC, 20));
 		lblChooseUser.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblChooseUser.setBounds(45, 94, 191, 51);
+		lblChooseUser.setBounds(246, 33, 191, 51);
 		getContentPane().add(lblChooseUser);
 
 		btnLogin = new JButton("Login");
@@ -75,6 +80,11 @@ public class FrmLogin extends JFrame {
 
 		btnLogin.setBounds(341, 216, 139, 51);
 		getContentPane().add(btnLogin);
+		
+		JLabel lblFotoLogin = new JLabel("");
+		lblFotoLogin.setIcon(new ImageIcon(FrmLogin.class.getResource("/resources/fotoLogin1.png")));
+		lblFotoLogin.setBounds(10, 10, 566, 343);
+		getContentPane().add(lblFotoLogin);
 
 	}
 
