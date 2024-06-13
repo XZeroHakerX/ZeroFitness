@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 import javax.swing.JFrame;
@@ -25,18 +27,38 @@ public class CtrFrmPrincipal {
 		userActive = CtrFrmLogin.userSelected;
 
 		if (userActive == null) {
+
 			FrmPrincipal.txtUser.setText("User no selected.");
 			FrmPrincipal.txtAge.setText("0");
 			FrmPrincipal.txtWeight.setText("0");
 			FrmPrincipal.txtHeight.setText("0");
+			FrmPrincipal.lblIMCMessage.setText("User no selected.");
 
 		} else {
+
 			FrmPrincipal.txtUser.setText(userActive.get().getName());
 			FrmPrincipal.txtAge.setText(userActive.get().getAge().toString());
 			FrmPrincipal.txtWeight.setText(userActive.get().getWeight().toString());
 			FrmPrincipal.txtHeight.setText(userActive.get().getHeight().toString());
-			FrmPrincipal.txtIMC.setText(userActive.get().getIMC().toString());
-			
+
+			DecimalFormat df = new DecimalFormat("#.00");
+			Double auxImc = userActive.get().getIMC();
+
+			FrmPrincipal.txtIMC.setText(df.format(auxImc));
+
+			if (auxImc < 18.5) {
+				FrmPrincipal.lblIMCMessage.setText("Underweight than normal.");
+				FrmPrincipal.lblIMCMessage.setForeground(new Color(0, 191, 255));
+			} else if (auxImc >= 18.5 && auxImc < 24.9) {
+				FrmPrincipal.lblIMCMessage.setText("Normal weight.");
+				FrmPrincipal.lblIMCMessage.setForeground(new Color(124, 252, 0));
+			} else if (auxImc >= 24.9 && auxImc < 29.9) {
+				FrmPrincipal.lblIMCMessage.setText("Weight higher than normal.");
+				FrmPrincipal.lblIMCMessage.setForeground(new Color(255, 165, 0));
+			} else {
+				FrmPrincipal.lblIMCMessage.setText("Obesity");
+			}
+
 		}
 	}
 

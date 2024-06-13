@@ -24,6 +24,7 @@ import java.awt.Toolkit;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.SwingConstants;
 
 public class FrmPrincipal extends JFrame {
 
@@ -46,6 +47,7 @@ public class FrmPrincipal extends JFrame {
 	public static JButton btnSave;
 	public static JButton btnCopiarRutina;
 	public static JButton btnStartRoutine;
+	public static JLabel lblIMCMessage;
 	private static JButton btnEdit;
 
 	private static JFrame context;
@@ -107,7 +109,7 @@ public class FrmPrincipal extends JFrame {
 		pnCenter.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblRoutines = new JLabel("Routines: ");
-		lblRoutines.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblRoutines.setFont(new Font("Sylfaen", Font.PLAIN, 60));
 		pnCenter.add(lblRoutines, BorderLayout.NORTH);
 
 		JPanel pnButtonRoutines = new JPanel();
@@ -120,11 +122,26 @@ public class FrmPrincipal extends JFrame {
 		pnButtonRoutines.add(btnCopiarRutina);
 
 		btnStartRoutine = new JButton("Start New Routine");
+		btnStartRoutine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pnButtonRoutines.add(btnStartRoutine);
-
+		
+		JPanel pnCenterRoutines = new JPanel();
+		pnCenterRoutines.setBackground(new Color(255, 228, 181));
+		pnCenter.add(pnCenterRoutines, BorderLayout.CENTER);
+		pnCenterRoutines.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblSubRoutines = new JLabel("Routines realized:");
+		lblSubRoutines.setBackground(new Color(255, 255, 255));
+		lblSubRoutines.setFont(new Font("Sylfaen", Font.ITALIC, 20));
+		pnCenterRoutines.add(lblSubRoutines, BorderLayout.NORTH);
+		
+		JLabel lblCopyOrStart = new JLabel("Select routine for copy or start new!");
+		lblCopyOrStart.setFont(new Font("Sylfaen", Font.PLAIN, 20));
+		pnCenterRoutines.add(lblCopyOrStart, BorderLayout.SOUTH);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		pnCenter.add(scrollPane, BorderLayout.CENTER);
-
+		pnCenterRoutines.add(scrollPane, BorderLayout.CENTER);
+		
 		JList list = new JList();
 		scrollPane.setViewportView(list);
 
@@ -145,6 +162,9 @@ public class FrmPrincipal extends JFrame {
 		lblUser.setFont(fontFrmLabels);
 
 		txtUser = new JTextField();
+		txtUser.setForeground(new Color(0, 139, 139));
+		txtUser.setHorizontalAlignment(SwingConstants.CENTER);
+		txtUser.setFont(new Font("Dubai", Font.ITALIC, 25));
 		pnUser.add(txtUser);
 		txtUser.setEditable(false);
 		txtUser.setColumns(10);
@@ -159,6 +179,8 @@ public class FrmPrincipal extends JFrame {
 		lblAge.setFont(fontFrmLabels);
 
 		txtAge = new JTextField();
+		txtAge.setForeground(new Color(255, 165, 0));
+		txtAge.setHorizontalAlignment(SwingConstants.CENTER);
 		pnAge.add(txtAge, BorderLayout.CENTER);
 		txtAge.setFont(fontFrmTexts);
 		txtAge.setEditable(false);
@@ -175,6 +197,8 @@ public class FrmPrincipal extends JFrame {
 		lblWeight.setFont(fontFrmLabels);
 
 		txtWeight = new JTextField();
+		txtWeight.setForeground(new Color(255, 165, 0));
+		txtWeight.setHorizontalAlignment(SwingConstants.CENTER);
 		pnWeight.add(txtWeight, BorderLayout.CENTER);
 		txtWeight.setFont(fontFrmTexts);
 		txtWeight.setEditable(false);
@@ -190,6 +214,8 @@ public class FrmPrincipal extends JFrame {
 		lblHeight.setFont(fontFrmLabels);
 
 		txtHeight = new JTextField();
+		txtHeight.setForeground(new Color(255, 165, 0));
+		txtHeight.setHorizontalAlignment(SwingConstants.CENTER);
 		pnHeight.add(txtHeight, BorderLayout.CENTER);
 		txtHeight.setFont(fontFrmTexts);
 		txtHeight.setEditable(false);
@@ -205,13 +231,17 @@ public class FrmPrincipal extends JFrame {
 		lblIMC.setFont(fontFrmLabels);
 
 		txtIMC = new JTextField();
+		txtIMC.setForeground(new Color(255, 140, 0));
+		txtIMC.setHorizontalAlignment(SwingConstants.CENTER);
 		pnIMC.add(txtIMC, BorderLayout.CENTER);
 		txtIMC.setFont(fontFrmTexts);
 		txtIMC.setEditable(false);
 		txtIMC.setColumns(10);
 
-		JLabel lblIMCMessage = new JLabel("");
-		lblIMCMessage.setFont(fontFrmLabels);
+		lblIMCMessage = new JLabel("");
+		lblIMCMessage.setForeground(new Color(255, 0, 0));
+		lblIMCMessage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIMCMessage.setFont(new Font("Rockwell", Font.BOLD | Font.ITALIC, 30));
 		pnRight.add(lblIMCMessage);
 
 		JPanel pnGuardar = new JPanel();
@@ -236,7 +266,7 @@ public class FrmPrincipal extends JFrame {
 
 		JLabel lblActiveEdit = new JLabel("Active edit User! --->");
 		lblActiveEdit.setBackground(new Color(240, 128, 128));
-		lblActiveEdit.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblActiveEdit.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		pnEdit.add(lblActiveEdit);
 
 		btnEdit = new JButton("EDIT");
@@ -278,6 +308,12 @@ public class FrmPrincipal extends JFrame {
 		mnRoutine = new JMenu("Routine");
 		mnRoutine.setFont(fontMenu);
 		mnBar.add(mnRoutine);
+		
+		JMenuItem mntmAdminRoutines = new JMenuItem("Admin Routines");
+		mnRoutine.add(mntmAdminRoutines);
+		
+		JMenuItem mntmStartNewRoutine = new JMenuItem("Start New Routine");
+		mnRoutine.add(mntmStartNewRoutine);
 
 		mnExercise = new JMenu("Exercise");
 		mnExercise.setFont(fontMenu);

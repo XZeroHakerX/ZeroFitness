@@ -33,8 +33,8 @@ public class CtrUser {
 
 			aux.add(new User(47560414, "Julian", null, null, 32, 68.2, 1.69));
 			aux.add(new User(47560001, "Pepe", null, null, 31, 80.0, 1.88));
-			aux.add(new User(47560002, "Angela", null, null, 27, 90.0, 1.73));
-			aux.add(new User(47850003, "Anyelina", null, null, 40, 60.2, 1.68));
+			aux.add(new User(47560002, "Angela", null, null, 27, 90.0, 1.90));
+			aux.add(new User(47850003, "Anyelina", null, null, 40, 40.2, 1.99));
 
 		} catch (Exception e) {
 			System.out.println("No puedo");

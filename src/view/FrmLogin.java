@@ -56,15 +56,17 @@ public class FrmLogin extends JFrame {
 	private void addComponents() {
 		comboBoxUser = new JComboBox<>(usersNames);
 		comboBoxUser.setBounds(246, 94, 234, 51);
+		comboBoxUser.setSelectedIndex(-1);
 		getContentPane().add(comboBoxUser);
 
-		JLabel lblNewLabel = new JLabel("Choose User:");
-		lblNewLabel.setFont(new Font("Rockwell", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(45, 94, 191, 51);
-		getContentPane().add(lblNewLabel);
+		JLabel lblChooseUser = new JLabel("Choose User:");
+		lblChooseUser.setFont(new Font("Rockwell", Font.BOLD | Font.ITALIC, 20));
+		lblChooseUser.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblChooseUser.setBounds(45, 94, 191, 51);
+		getContentPane().add(lblChooseUser);
 
 		btnLogin = new JButton("Login");
+		btnLogin.setEnabled(false);
 
 		btnCancel = new JButton("Cancel");
 
@@ -88,6 +90,7 @@ public class FrmLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				selectedOption = (String) comboBoxUser.getSelectedItem();
+				btnLogin.setEnabled(true);
 			}
 
 		});

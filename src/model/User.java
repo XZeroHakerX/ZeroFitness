@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
@@ -116,7 +117,7 @@ public class User implements Serializable, Comparable<User> {
 	// Métodos propios:
 
 	public Double getIMC() {
-		return weight / height;
+		return weight / (height * height);
 	}
 
 	// Métodos para comparaciones:
